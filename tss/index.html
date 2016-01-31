@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Top School Selector By Workswell</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style type="text/css">
+      /* Base Application Styles */
+    html,
+    body,
+    #app,
+    .launch-page {
+      height: 100%;
+    }
+
+    .launch-page {
+    background-image: -webkit-linear-gradient(195deg, #009acc, #363795);
+    background-image: -o-linear-gradient(195deg, #009acc, #363795);
+    background-image: linear-gradient(-105deg, #009acc, #363795);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    }
+
+    .loader {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    width: 99px;
+    position: relative;
+    text-indent: -9999em;
+    }
+
+    .ball {
+    border-radius: 50%;
+    background: white;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: loading 1.2s linear infinite;
+    -o-animation: loading 1.2s linear infinite;
+       animation: loading 1.2s linear infinite;
+    }
+
+    .ball:nth-of-type(2) {
+    -webkit-animation-delay: 0.4s;
+    -o-animation-delay: 0.4s;
+       animation-delay: 0.4s;
+    }
+
+    .ball:nth-of-type(3) {
+    -webkit-animation-delay: 0.8s;
+    -o-animation-delay: 0.8s;
+       animation-delay: 0.8s;
+    }
+
+    @-webkit-keyframes loading {
+    0% {
+      opacity: 0;
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+    20% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    40% {
+      -webkit-transform: translate3d(33px, 0, 0);
+      transform: translate3d(33px, 0, 0);
+    }
+    60% {
+      -webkit-transform: translate3d(66px, 0, 0);
+      transform: translate3d(66px, 0, 0);
+    }
+    80% {
+      -webkit-transform: translate3d(99px, 0, 0);
+      transform: translate3d(99px, 0, 0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translate3d(99px, 0, 0) scale(0.5);
+      transform: translate3d(99px, 0, 0) scale(0.5);
+      opacity: 0;
+    }
+    }
+
+    @-o-keyframes loading {
+    0% {
+      opacity: 0;
+      -webkit-transform: scale(0.5);
+      -o-transform: scale(0.5);
+         transform: scale(0.5);
+    }
+    20% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      -o-transform: scale(1);
+         transform: scale(1);
+    }
+    40% {
+      -webkit-transform: translate3d(33px, 0, 0);
+      transform: translate3d(33px, 0, 0);
+    }
+    60% {
+      -webkit-transform: translate3d(66px, 0, 0);
+      transform: translate3d(66px, 0, 0);
+    }
+    80% {
+      -webkit-transform: translate3d(99px, 0, 0);
+      transform: translate3d(99px, 0, 0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translate3d(99px, 0, 0) scale(0.5);
+      transform: translate3d(99px, 0, 0) scale(0.5);
+      opacity: 0;
+    }
+    }
+
+    @keyframes loading {
+    0% {
+      opacity: 0;
+      -webkit-transform: scale(0.5);
+      -o-transform: scale(0.5);
+         transform: scale(0.5);
+    }
+    20% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      -o-transform: scale(1);
+         transform: scale(1);
+    }
+    40% {
+      -webkit-transform: translate3d(33px, 0, 0);
+      transform: translate3d(33px, 0, 0);
+    }
+    60% {
+      -webkit-transform: translate3d(66px, 0, 0);
+      transform: translate3d(66px, 0, 0);
+    }
+    80% {
+      -webkit-transform: translate3d(99px, 0, 0);
+      transform: translate3d(99px, 0, 0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translate3d(99px, 0, 0) scale(0.5);
+      transform: translate3d(99px, 0, 0) scale(0.5);
+      opacity: 0;
+    }
+    }
+  </style
+</head>
+<body>
+  <div id="app">
+    <div class="launch-page">
+      <div class="loader">
+        Loading...
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </div>
+    </div>
+  </div>
+  <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
+  <script type="text/javascript" src="assets/app.js"></script>
+</body>
+</html>
