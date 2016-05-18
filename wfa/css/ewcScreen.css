@@ -85,9 +85,9 @@ select {
 
 .ewcBtn {
     /*
-	background-color:#E7E7E7;
-	border:1px solid #CFCFCF;
-	*/
+  background-color:#E7E7E7;
+  border:1px solid #CFCFCF;
+  */
     font-size: 11px;
 }
 
@@ -3762,9 +3762,9 @@ button.list-group-item-danger.active:focus {
 }
 
 @media (min-width: 900px) {
-	.footer .col-xs-12 {
-		text-align: right;
-	}
+  .footer .col-xs-12 {
+    text-align: right;
+  }
 }
 
 .footer a {
@@ -3780,6 +3780,13 @@ button.list-group-item-danger.active:focus {
   border-bottom-right-radius: 4px;
 }
 
+.form-group .input-with-addon:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
 #ewcModUC tr td:nth-child(3) select, #ewcModUC tr td:nth-child(3) input {
   width: 100px;
 }
@@ -3787,6 +3794,7 @@ button.list-group-item-danger.active:focus {
 @media (min-width: 415px) {
   .form-group label,  .form-group select, .form-group input, .form-group .input-element{
     text-align: right;
+    vertical-align: middle;
   }
 
   .form-group label {
