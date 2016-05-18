@@ -1,0 +1,1033 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Wine Benchmark Calculator</title>
+    <link href="css/ewcScreen.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body onload="registerHandler()">
+    <div id="wineCalcContainer">
+        <form name="WineCalcForm" method="post" action="Default.aspx" id="WineCalcForm">
+            <div>
+                <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+                <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+                <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTM2NjA3MDc2Ng9kFgICAQ9kFgICAw8PFgIeB0VuYWJsZWRnZBYCAgEPZBYUAgEPDxYCHghJbWFnZVVybAUVLi4vZ3JhcGhpY3MvcGFnZTQuZ2lmZGQCBw9kFgJmD2QWAgIBDw8WAh4HVmlzaWJsZWhkFgICAw9kFgICAQ8QDxYCHgdDaGVja2VkZ2RkZGQCCQ9kFgJmD2QWAgIBDw8WAh8CaGQWCgIDDxAPFggeFEFwcGVuZERhdGFCb3VuZEl0ZW1zZx4NRGF0YVRleHRGaWVsZAUFU3RhdGUeDkRhdGFWYWx1ZUZpZWxkBQVTdGF0ZR4LXyFEYXRhQm91bmRnZA8WB2YCAQICAgMCBAIFAgYWBxBlZWcQBQ9OZXcgU291dGggV2FsZXMFD05ldyBTb3V0aCBXYWxlc2cQBQpRdWVlbnNsYW5kBQpRdWVlbnNsYW5kZxAFD1NvdXRoIEF1c3RyYWxpYQUPU291dGggQXVzdHJhbGlhZxAFCFRhc21hbmlhBQhUYXNtYW5pYWcQBQhWaWN0b3JpYQUIVmljdG9yaWFnEAURV2VzdGVybiBBdXN0cmFsaWEFEVdlc3Rlcm4gQXVzdHJhbGlhZxYBAgFkAgUPEA8WCB8EZx8FBQpSZWdpb25OYW1lHwYFCFJlZ2lvbklkHwdnZBAVEQASQmlnIFJpdmVycyAtIG90aGVyEUNhbmJlcnJhIERpc3RyaWN0FkNlbnRyYWwgUmFuZ2VzIC0gb3RoZXIFQ293cmEIR3VuZGFnYWkSSHVudGVyIFZhbGxleSBab25lBk11ZGdlZRROb3J0aGVybiBSaXZlcnMgWm9uZRROb3J0aGVybiBTbG9wZXMgWm9uZQZPcmFuZ2UIUml2ZXJpbmEQU291dGggQ29hc3QgWm9uZRRTb3V0aGVybiBOU1cgLSBvdGhlcgpUdW1iYXJ1bWJhE1dlc3Rlcm4gUGxhaW5zIFpvbmUFT3RoZXIVEQADNjM0AzYzNgM2MzcDNjQxAzY1MAM2NTIDNjYyAzY2NQM2NjYDNjY3AzY3NAM2NzgDNjgwAzY4MwM2ODYBMBQrAxFnZ2dnZ2dnZ2dnZ2dnZ2dnZxYBAgJkAgcPEA8WCB8EZx8FBQtWYXJpZXR5TmFtZR8GBQ5HcmFwZVZhcmlldHlJZB8HZ2QPFjtmAgECAgIDAgQC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" />
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['WineCalcForm'];
+            if (!theForm) {
+                theForm = document.WineCalcForm;
+            }
+
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+            //]]>
+            </script>
+            <script src="/WebResource.axd?d=567aG4u5WUT88IvkGhD8UpkeBtg30xqhpa75R9DdVYS2Dg0Ay585ZhRTNDpYbYCNVdMEmNVEg2SyjRIIGfJU4cVy-PA1&amp;t=635675130286393118" type="text/javascript"></script>
+            <script src="/ScriptResource.axd?d=yFfrEoZLaJNRWH-8NNEm-_pBZ989KSnaJ1kc58pWEJOIU42PzZ9PzNz5TXTIf_0fH3zR1P7kyw6rDaKiux2ubWvjuamvj4e3UeOytAa-MoNK6BEC03lnwdOD_vd2FRGHjIittVYGkQJ2mlAYk6aI56z5a7ZkVlZ18MUgNBbcrXRWmMcT0&amp;t=ffffffffd3a5635a" type="text/javascript"></script>
+            <script type="text/javascript">
+            //<![CDATA[
+            if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+            //]]>
+            </script>
+            <script src="/ScriptResource.axd?d=La3JJPrL2AEj9gkRnpV27epYSXIyQ9L-YAZS4Ou1sKaMv7X4M8F5VHKeI_Zv16Yex_wuriv1yaEhFkz9t6V8CoOroEu3m3R19MHMxyYA5DnVGPiumC8EM2SjMIUaf-IQnxvhC2AMCqrxS1MaQmmckqm88O1ClWlR8DNXjvsWra6UYtig0&amp;t=ffffffffd3a5635a" type="text/javascript"></script>
+            <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+            <div>
+                <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+                <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWSAKJ0//iBALn8dzgCgKN67jbBALkpuirAQLlpuirAQLqpuirAQLrpuirAQL4puirAQL5puirAQKPvu2dAgKPvumeAgKPvvWfAgKPvvGYAgKPvv2ZAgKPvvmaAgKPvoWbAgKPvoHkAgKPvs2VAgKPvsmWAgKSv+2dAgKSv+meAgKSv/WfAgKSv/GYAgKSv/2ZAgKSv/maAgKSv4WbAgKSv4HkAgKSv82VAgKSv8mWAgLNv+2dAgLNv+meAgLNv/WfAgLNv/GYAgLNv/2ZAgLNv/maAgLNv4WbAgLNv4HkAgLNv82VAgLNv8mWAgLQuO2dAgLQuOmeAgLQuPWfAgLQuPGYAgLQuP2ZAgLQuPmaAgLQuIWbAgLQuIHkAgLQuM2VAgLQuMmWAgLzuO2dAgLu8ejkBAKHu/DTAwLy+8KaDALtwLs8AouL3cAKAr7H58kNAtap5PUCAqiL9N8IAtqqsLoLAq/mufAHAsmW16YNAp/mn+8KAoiJyc4HAvTH8YEBApGj56AMArjjv4cCAu3A8zoCz8O8vQYC7KTUggMC8bqz7wcCp++gpAIC9cqb6gOvoLlUeiIvqbKFejQC7336+8ntRw==" />
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            Sys.WebForms.PageRequestManager._initialize('ScriptManager', document.getElementById('WineCalcForm'));
+            Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tWineCalcControl$ewcUpdatePanel0', 'tWineCalcControl$ewcUpdatePanel1', 'tWineCalcControl$ewcUpdatePanel2', 'tWineCalcControl$ewcUpdatePanel3', 'tWineCalcControl$ewcUpdatePanel4', 'tWineCalcControl$ewcUpdatePanel5', 'tWineCalcControl$ewcUpdatePanel6', 'tWineCalcControl$ewcUpdatePanel7', 'tWineCalcControl$ewcUpdatePanel8'], [], ['WineCalcControl$ewcPanel6Calc', 'WineCalcControl$ewcPanel6Calc2', 'WineCalcControl$ewcPanel6Print', 'WineCalcControl$ewcPanel6Print2'], 90);
+            //]]>
+            </script>
+            <div id="WineCalcControlPanel">
+                <!--// Javascript //-->
+                <script type="text/javascript">
+                //Show element
+                function ewcShow(id) {
+                    try {
+                        if ($("#" + id).hasClass("hidden")) {
+                            $("#" + id).removeClass("hidden");
+                        }
+                    } catch (e) {}
+                }
+
+                //Hide element
+                function ewcHide(id) {
+                    try {
+                        if (!$("#" + id).hasClass("hidden")) {
+                            $("#" + id).addClass("hidden");
+                        }
+                    } catch (e) {}
+                }
+
+                //Return to start confirmation box
+                function startAgain() {
+                    var confirmMsg = "Warning: By returning to the start of the benchmark calculation process, you will lose all information previously entered. Do you wish to continue?";
+
+                    if (confirm(confirmMsg)) {
+                        location.href = self.location + "?returnToStart=true";
+                    }
+                }
+
+                //Open up a print window
+                function openWindow() {
+                    var xLeft = 300; //Will keep x position from left
+                    var yTop = 0; //Will put new window on the top
+                    var sUrl = "Print.aspx"; //Window name
+                    var sFeatures = "width=650,height=850,left=" + xLeft + ",top=" + yTop + ",status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=no"; //Features of new window
+                    win = window.open(sUrl, "Print", sFeatures);
+                    win.focus(); //Gives focus to newly opened window
+                }
+                </script>
+                <!--// Logo //-->
+                <table class="ewcLogoBox">
+                    <tr>
+                        <td valign="middle" align="left">
+                            <img src="./graphics/AWBC_inlinestrip.gif" alt="" />
+                        </td>
+                        <td valign="middle" align="right">
+                            <img src="./graphics/LogoWFAburgundy.gif" alt="" class="wfa_logo"/>
+                        </td>
+                    </tr>
+                </table>
+                <table class="ewcMainTitleBox">
+                    <tr>
+                        <td valign="middle" align="left" class="ewcMainTitle">Wine Benchmark Calculator</td>
+                        <td valign="middle" align="right">
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <!--// Content Body //-->
+                <!--// ENTRY PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel0">
+                </div>
+                <!--// PANEL 1 //-->
+                <div id="WineCalcControl_ewcUpdatePanel1">
+                </div>
+                <!--// PANEL 2 //-->
+                <div id="WineCalcControl_ewcUpdatePanel2">
+                </div>
+                <!--// PANEL 3 //-->
+                <div id="WineCalcControl_ewcUpdatePanel3">
+                </div>
+                <!--// PANEL 4 //-->
+                <div id="WineCalcControl_ewcUpdatePanel4">
+                </div>
+                <!--// PANEL 5 //-->
+                <div id="WineCalcControl_ewcUpdatePanel5">
+                </div>
+                <!--// PANEL 6 //-->
+                <div id="WineCalcControl_ewcUpdatePanel6">
+                    <div id="WineCalcControl_ewcPanel6">
+                        <div class="ewcHead2">Benchmark Comparison Results</div>
+                        <div class="ewcCenter">
+                            <div class="ewcFormTable">
+                                You are able to adjust certain input criteria and derived assumptions in the <strong>Adjusted Benchmark Result (AUD)</strong> column.
+                                <br />
+                                <br /> Once you have changed any inputs and assumptions, click the <strong>Calculate</strong> button to recalculate for comparison against the original benchmark. There is a Calculate button under each section for your convenience.
+                            </div>
+                            <br />
+                            <!--// Buttons //-->
+                            <table class="ewcFormTable" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left">
+                                        <input type="button" value="Create New Benchmark" class="btn btn-default" onclick="startAgain();" />
+                                    </td>
+                                    <td align="right">
+                                        <input type="submit" name="WineCalcControl$ewcPanel6Print" value="Printer Friendly" id="WineCalcControl_ewcPanel6Print" class="btn btn-default" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table" cellpadding="0" cellspacing="0">
+                                <!--// User Criteria //-->
+                                <tbody>
+                                    <tr>
+                                        <td class="ewcTHead" align="left">
+                                            <div>Your data</div>
+                                        </td>
+                                        <td class="ewcTHead" align="right" colspan="2">
+                                            <span class="ewcLink" onclick="ewcShow('ewcModUC');">Show</span> &nbsp;|&nbsp;
+                                            <span class="ewcLink" onclick="ewcHide('ewcModUC');">Hide</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                                <table class="table">
+                                <tbody id="ewcModUC">
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="ewcBold">Benchmark Result</div>
+                                        </td>
+                                        <td>
+                                            <div class="ewcBold">Adjusted Benchmark Result</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Region</td>
+                                        <td class="ewcResultRow2">Canberra District</td>
+                                        <td class="ewcResultRow2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Variety</td>
+                                        <td>Black Muscat</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Destination</td>
+                                        <td class="ewcResultRow2">Australia</td>
+                                        <td class="ewcResultRow2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Retail price point (AUD)</td>
+                                        <td>4.99 AUD</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <select name="WineCalcControl$ewcModRRP" id="WineCalcControl_ewcModRRP" class="form-control" style="width:100px">
+                                                    <option value=""></option>
+                                                    <option selected="selected" value="4.99">4.99</option>
+                                                    <option value="5.99">5.99</option>
+                                                    <option value="6.99">6.99</option>
+                                                    <option value="7.99">7.99</option>
+                                                    <option value="8.99">8.99</option>
+                                                    <option value="9.99">9.99</option>
+                                                    <option value="10.99">10.99</option>
+                                                    <option value="11.99">11.99</option>
+                                                    <option value="12.99">12.99</option>
+                                                    <option value="13.99">13.99</option>
+                                                    <option value="14.99">14.99</option>
+                                                    <option value="15.99">15.99</option>
+                                                    <option value="16.99">16.99</option>
+                                                    <option value="17.99">17.99</option>
+                                                    <option value="18.99">18.99</option>
+                                                    <option value="19.99">19.99</option>
+                                                    <option value="20.99">20.99</option>
+                                                    <option value="21.99">21.99</option>
+                                                    <option value="22.99">22.99</option>
+                                                    <option value="23.99">23.99</option>
+                                                    <option value="24.99">24.99</option>
+                                                    <option value="25.99">25.99</option>
+                                                    <option value="26.99">26.99</option>
+                                                    <option value="27.99">27.99</option>
+                                                    <option value="28.99">28.99</option>
+                                                    <option value="29.99">29.99</option>
+                                                    <option value="30.99">30.99</option>
+                                                    <option value="31.99">31.99</option>
+                                                    <option value="32.99">32.99</option>
+                                                    <option value="33.99">33.99</option>
+                                                    <option value="34.99">34.99</option>
+                                                    <option value="35.99">35.99</option>
+                                                    <option value="36.99">36.99</option>
+                                                    <option value="37.99">37.99</option>
+                                                    <option value="38.99">38.99</option>
+                                                    <option value="39.99">39.99</option>
+                                                    <option value="40.99">40.99</option>
+                                                    <option value="41.99">41.99</option>
+                                                    <option value="42.99">42.99</option>
+                                                    <option value="43.99">43.99</option>
+                                                    <option value="44.99">44.99</option>
+                                                    <option value="45.99">45.99</option>
+                                                    <option value="46.99">46.99</option>
+                                                    <option value="47.99">47.99</option>
+                                                    <option value="48.99">48.99</option>
+                                                    <option value="49.99">49.99</option>
+                                                    <option value="50.99">50.99</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Winery size</td>
+                                        <td class="ewcResultRow2">Micro</td>
+                                        <td class="ewcResultRow2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Tank holding period (months)</td>
+                                        <td class="ewcResultRow2">1</td>
+                                        <td class="ewcResultRow2">
+                                                <input name="WineCalcControl$ewcModMITank" type="text" value="1" id="WineCalcControl_ewcModMITank" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Barrel price</td>
+                                        <td>$0.00</td>
+                                        <td>
+                                                <input name="WineCalcControl$ewcModBarrelPrice" type="text" value="0.00" id="WineCalcControl_ewcModBarrelPrice" />
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bottle holding period (months)</td>
+                                        <td>1</td>
+                                        <td>
+                                                <input name="WineCalcControl$ewcModMIBottle" type="text" value="1" id="WineCalcControl_ewcModMIBottle" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td align="right" colspan="3">
+                                            <input type="submit" name="WineCalcControl$ewcPanel6Calc" value="Calculate" id="WineCalcControl_ewcPanel6Calc" class="btn btn-default" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table" cellpadding="0" cellspacing="0">
+                                <!--// Assumptions //-->
+                                <tbody>
+                                    <tr>
+                                        <td align="left" class="ewcTHead">Calculated assumptions</td>
+                                        <td align="right" class="ewcTHead" colspan="2">
+                                            <span class="ewcLink" onclick="ewcShow('ewcModAssumptions')">Show</span> &nbsp;|&nbsp;
+                                            <span class="ewcLink" onclick="ewcHide('ewcModAssumptions')">Hide</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table">
+                                <tbody id="ewcModAssumptions">
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="ewcBold">Benchmark Result (AUD)</div>
+                                        </td>
+                                        <td>
+                                            <div class="ewcBold">Adjusted Benchmark Result (AUD)</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Grape cost ($ per tonne)</td>
+                                        <td class="ewcResultRow2">$728.00</td>
+                                        <td class="ewcResultRow2">
+                                            <input name="WineCalcControl$ewcModGrapeCost" type="text" value="728.00" id="WineCalcControl_ewcModGrapeCost" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Extraction rate (litres per tonne)</td>
+                                        <td>725</td>
+                                        <td>
+                                            <input name="WineCalcControl$ewcModExtrRate" type="text" value="725.00" id="WineCalcControl_ewcModExtrRate" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Processing cost ($ per litre)</td>
+                                        <td class="ewcResultRow2">$3.00</td>
+                                        <td class="ewcResultRow2">
+                                            <input name="WineCalcControl$ewcModProcCost" type="text" value="3.00" id="WineCalcControl_ewcModProcCost" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Holding cost ($ per litre per month)</td>
+                                        <td>$0.06</td>
+                                        <td>
+                                            <input name="WineCalcControl$ewcModHoldingCostPerLtr" type="text" value="0.06" id="WineCalcControl_ewcModHoldingCostPerLtr" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Packaging cost ($ per dozen)</td>
+                                        <td class="ewcResultRow2">$10.00</td>
+                                        <td class="ewcResultRow2">
+                                            <input name="WineCalcControl$ewcModPackCost" type="text" value="10.00" id="WineCalcControl_ewcModPackCost" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Corporate Sales Team commission</td>
+                                        <td>10.00 %</td>
+                                        <td>
+                                            <input name="WineCalcControl$ewcModDistrMargin" type="text" value="10.00" id="WineCalcControl_ewcModDistrMargin" style="width:95px;" />%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Importer commission</td>
+                                        <td>0.00 %</td>
+                                        <td>
+                                            <input name="WineCalcControl$ewcModImporterMargin" type="text" value="0.00" id="WineCalcControl_ewcModImporterMargin" style="width:95px;" />%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">WET</td>
+                                        <td class="ewcResultRow2">29.00 %</td>
+                                        <td class="ewcResultRow2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Federal excise (per dozen)</td>
+                                        <td>$0.00</td>
+                                        <td>$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customs duties</td>
+                                        <td>$0.00</td>
+                                        <td>$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">State excise (per dozen)</td>
+                                        <td class="ewcResultRow2">$0.00</td>
+                                        <td class="ewcResultRow2">$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Other taxes</td>
+                                        <td>$0.00</td>
+                                        <td>$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Consumption tax</td>
+                                        <td class="ewcResultRow2">0.00 %</td>
+                                        <td class="ewcResultRow2">0.00 %</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ocean freight (per dozen)</td>
+                                        <td>$0.00</td>
+                                        <td>
+                                            <input name="WineCalcControl$ewcModOFreight" type="text" value="0.00" id="WineCalcControl_ewcModOFreight" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Australian domestic freight (per dozen)</td>
+                                        <td class="ewcResultRow2">$3.00</td>
+                                        <td class="ewcResultRow2">
+                                            <input name="WineCalcControl$ewcModDomFreight" type="text" value="3.00" id="WineCalcControl_ewcModDomFreight" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Waste factor</td>
+                                        <td>4.00 %</td>
+                                        <td>
+                                            <input name="WineCalcControl$ewcModWasteFactor" type="text" value="4.00" id="WineCalcControl_ewcModWasteFactor" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Retail margin</td>
+                                        <td class="ewcResultRow2">30.00 %</td>
+                                        <td class="ewcResultRow2">
+                                            <input name="WineCalcControl$ewcModRetailMargin" type="text" value="30.00" id="WineCalcControl_ewcModRetailMargin" style="width:95px;" />%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GST</td>
+                                        <td>10.00 %</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">Exchange Rate</td>
+                                        <td class="ewcResultRow2">1.00</td>
+                                        <td class="ewcResultRow2">
+                                            <input name="WineCalcControl$ewcModForeignExtRate" type="text" value="1.00" id="WineCalcControl_ewcModForeignExtRate" style="width:95px;" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td align="right" colspan="3">
+                                            <input type="submit" name="WineCalcControl$ewcPanel6Calc2" value="Calculate" id="WineCalcControl_ewcPanel6Calc2" class="btn btn-default" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--// Results //-->
+                            <table class="table" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="ewcTHead" align="left">
+                                            <div>Your results</div>
+                                        </td>
+                                        <td class="ewcTHead" align="right" colspan="2">
+                                            <span class="ewcLink" onclick="ewcShow('ewcModResults')">Show</span> &nbsp;|&nbsp;
+                                            <span class="ewcLink" onclick="ewcHide('ewcModResults')">Hide</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table" cellpadding="0" cellspacing="0">
+                                <tbody id="ewcModResults">
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="ewcBold">Benchmark Result (AUD)</div>
+                                        </td>
+                                        <td>
+                                            <div class="ewcBold">Adjusted Benchmark Result (AUD)</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">
+                                            <div class="ewcBold">Retail price point ($ per bottle)</div>
+                                        </td>
+                                        <td class="ewcResultRow2">
+                                            <div class="ewcBold">$4.99</div>
+                                        </td>
+                                        <td class="ewcResultRow2">
+                                            <div class="ewcBold">$4.99</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="ewcBold">Retail price ($ per dozen)</div>
+                                        </td>
+                                        <td>
+                                            <div class="ewcBold">$59.88</div>
+                                        </td>
+                                        <td>
+                                            <div class="ewcBold">$59.88</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="ewcPadHeight">Less:</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ewcResultRow2">
+                                            <div>GST ($ per dozen)</div>
+                                        </td>
+                                        <td class="ewcResultRow2">
+                                            <div>$5.44</div>
+                                        </td>
+                                        <td class="ewcResultRow2">
+                                            <div>$5.44</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>Retailer margin ($ per dozen)</div>
+                                        </td>
+                                        <td>
+                                            <div>$16.33</div>
+                                        </td>
+                                        <td>
+                                            <div>$16.33</div>
+                                        </td>
+                                    </tr>
+                                    <caption>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    Wine equalisation tax ($ per dozen)</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $8.57
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $8.57
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    Wholesale price per dozen</div>
+                                            </td>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    $29.54
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    $29.54
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <div class="ewcpadHeight">
+                                                    Less:</div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    Corporate Sales Teamcommission ($ per dozen)</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $3.81
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $3.81
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    Importer commission ($ per dozen)</div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $0.00
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $0.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    Excise/Duty/Taxes ($ per dozen)</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $0.00
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $0.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    Ocean freight ($ per dozen)</div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $0.00
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $0.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    Australian domestic freight ($ per dozen)</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $3.00
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $3.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    Winery sale price per dozen</div>
+                                            </td>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    $22.73
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    $22.73
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <div class="ewcPadHeight">
+                                                    Production cost:</div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    Grape cost ($ per tonne)</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $728.00
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $728.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    Extraction Rate (litres per tonne)</div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    725
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    725
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    Cost of juice</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    $1.00
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    $1.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    Processing cost ($ per litre)</div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $3.00
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $3.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    Oak cost ($ per litre)</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $0.00
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $0.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    Holding cost ($ per litre)</div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $0.12
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $0.12
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    Wastage cost ($ per litre)</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $0.16
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div>
+                                                    $0.16
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    Wine cost ($ per litre)</div>
+                                            </td>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    $4.29
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    $4.29
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    Wine cost ($ per dozen)</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    $38.60
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    $38.60
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    Packaging cost ($ per dozen)</div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $10.00
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    $10.00
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    Total cost ex winery per dozen</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    $48.60
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    $48.60
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    Winery gross margin ($ per dozen)</div>
+                                            </td>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    ($25.87)
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ewcBold">
+                                                    ($25.87) <img id="WineCalcControl_ewcModWGMAlert" src="graphics/alert_small2.jpg" alt="Your winery gross margin is negative, this is not sustainable." style="border-width:0px;" />
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    Winery gross margin %</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    -113.84 %
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    -113.84 % <img id="WineCalcControl_ewcModWGMPercAlert" src="graphics/alert_small2.jpg" alt="Your winery gross margin is significantly less than the sustainable level required." style="border-width:0px;" />
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                &nbsp;</td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    Sustainable gross margin</div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    50.00 %
+                                                </div>
+                                            </td>
+                                            <td class="ewcResultRow2">
+                                                <div class="ewcBold">
+                                                    50.00 %
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <div>
+                                                    Sustainable gross margins differ depending on the size of the winery. Refer to Wine Australia: Directions to 2025 Benchmarking Guides for Small, Medium and Large Wine Businesses for more information. These publications are available
+                                                    <a href="http://www.wineaustralia.com/Australia/Default.aspx?tabid=3529">here</a>.</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <div>
+                                                    Gross margin is revenue less cost of goods sold and is expressed as a percentage. For example, revenue of $1m and cost of goods sold of $600,000 would equal 40% gross margin. The calculation is $1m - $600,000 divided by $1m.</div>
+                                            </td>
+                                        </tr>
+                                    </caption>
+                                </tbody>
+                            </table>
+                            <!--// Buttons //-->
+                            <table class="ewcFormTable" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left">
+                                        <input type="button" value="Create New Benchmark" class="btn btn-default" onclick="startAgain();" />
+                                    </td>
+                                    <td align="right">
+                                        <input type="submit" name="WineCalcControl$ewcPanel6Print2" value="Printer Friendly" id="WineCalcControl_ewcPanel6Print2" class="btn btn-default" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--// End Content Body //-->
+                <!--// TERMS AND CONDITIONS PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel7">
+                </div>
+                <!--// CREDITS AND DATA SOURCES PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel8">
+                </div>
+                <br />
+                <div class="container">
+                    <div class="footer row">
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">Terms & Conditions</a></div>
+                        <div class="col-xs-6 col-sm-3 col-md-3"><a href="#">Credits & Data Sources</a></div>
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">FAQs</a></div>
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">Feedback</a></div>
+                        <div class="col-xs-12 col-sm-3 col-md-3"><img src="./graphics/deloitteLogo.gif" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            Sys.Application.initialize();
+            //]]>
+            </script>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" language="javascript">
+function addTooltips() {
+    try {
+        // Add qtip text using 'title' attribute to all info images
+        $('img[alt|=info]').qtip({
+            hide: {
+                effect: 'fade'
+            }
+        });
+        //Prevent doubled-up qtip for Oak treatments info image
+        $('#oakInfo').qtip({
+            content: 'Enter the percentage of the treated wine that will receive this specific form of oak treatment. For example; if the total wine was 1000 litres and 50% is going to receive oak treatment, when completing the oak maturation section assuming half of the wine designated for oak treatment is going in new French oak you would input 50% which equals 250 litres of total wine.'
+        });
+    } catch (ex) {}
+}
+
+//execute after each Ajax postback
+function registerHandler() {
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(addTooltips);
+}
+
+$(document).ready(function() {
+    addTooltips();
+});
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-16447261-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+</html>

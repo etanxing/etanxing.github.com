@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Wine Benchmark Calculator</title>
+    <link href="css/ewcScreen.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body onload="registerHandler()">
+    <div id="wineCalcContainer">
+        <form name="WineCalcForm" method="post" action="Default.aspx" id="WineCalcForm">
+            <div>
+                <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+                <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+                <input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+                <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTM2NjA3MDc2Ng9kFgICAQ9kFgICAw8PFgIeB0VuYWJsZWRnZBYCAgEPZBYMAgEPDxYCHghJbWFnZVVybAUVLi4vZ3JhcGhpY3MvcGFnZTEuZ2lmZGQCBw9kFgJmD2QWAgIBDw8WAh4HVmlzaWJsZWhkFgICAw9kFgICAQ8QDxYCHgdDaGVja2VkZ2RkZGQCCQ9kFgJmD2QWAgIBDw8WAh8CZ2QWBgIDDxAPFggeFEFwcGVuZERhdGFCb3VuZEl0ZW1zZx4NRGF0YVRleHRGaWVsZAUFU3RhdGUeDkRhdGFWYWx1ZUZpZWxkBQVTdGF0ZR4LXyFEYXRhQm91bmRnZA8WB2YCAQICAgMCBAIFAgYWBxBlZWcQBQ9OZXcgU291dGggV2FsZXMFD05ldyBTb3V0aCBXYWxlc2cQBQpRdWVlbnNsYW5kBQpRdWVlbnNsYW5kZxAFD1NvdXRoIEF1c3RyYWxpYQUPU291dGggQXVzdHJhbGlhZxAFCFRhc21hbmlhBQhUYXNtYW5pYWcQBQhWaWN0b3JpYQUIVmljdG9yaWFnEAURV2VzdGVybiBBdXN0cmFsaWEFEVdlc3Rlcm4gQXVzdHJhbGlhZxYBZmQCBQ8QZA8WAQIBFgEQBQVPdGhlcgUFb3RoZXJnFgFmZAIHDxAPFggfBGcfBQULVmFyaWV0eU5hbWUfBgUOR3JhcGVWYXJpZXR5SWQfB2dkDxY7ZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQCFQIWAhcCGAIZAhoCGwIcAh0CHgIfAiACIQIiAiMCJAIlAiYCJwIoAikCKgIrAiwCLQIuAi8CMAIxAjICMwI0AjUCNgI3AjgCOQI6FjsQZWVnEAUGQXJuZWlzBQM0ODlnEAUHQmFyYmVyYQUDNDY2ZxAFDEJsYWNrIE11c2NhdAUDNDc1ZxAFDkNhYmVybmV0IEZyYW5jBQM0MzVnEAUSQ2FiZXJuZXQgU2F1dmlnbm9uBQM0MzZnEAUNQ2FuYWRhIE11c2NhdAUDNDg1ZxAFCENhcmlnbmFuBQM0NjdnEAULQ2hhbWJvdXJjaW4FAzQ3OWcQBQpDaGFyZG9ubmF5BQM0NDdnEAUMQ2hlbmluIEJsYW5jBQM0NDhnEAUJQ29sb21iYXJkBQM0NjBnEAUIQ3JvdWNoZW4FAzQ4M2cQBQhEb2xjZXR0bwUDNDgwZxAFCURvcmFkaWxsbwUDNDY5ZxAFBUR1cmlmBQM0NzRnEAUFR2FtYXkFAzQ4MWcQBQhHcmFjaWFubwUDNDc2ZxAFCEdyZW5hY2hlBQM0MzdnEAUHTGFncmVpbgUDNDgyZxAFBk1hbGJlYwUDNDYyZxAFCE1hcnNhbm5lBQM0NDlnEAUGTWF0YXJvBQM0NThnEAUGTWVybG90BQM0MzhnEAUHTWV1bmllcgUDNDM5ZxAFD011ZWxsZXIgVGh1cmdhdQUDNDkwZxAFCk11c2NhZGVsbGUFAzQ2NGcQBRxNdXNjYXQgYSBQZXRpdHMgR3JhaW5zIFJvdWdlBQM0NjNnEAUMTXVzY2F0IEJsYW5jBQM0NzBnEAUTTXVzY2F0IEdvcmRvIEJsYW5jbwUDNDYxZxAFCE5lYmJpb2xvBQM0NDBnEAUIUGFsb21pbm8FAzQ3MWcQBQ1QZWRybyBYaW1lbmVzBQM0NzJnEAUMUGV0aXQgVmVyZG90BQM0NDFnEAUKUGlub3QgR3JpcwUDNDUwZxAFClBpbm90IE5vaXIFAzQ0MmcQBQhSaWVzbGluZwUDNDUxZxAFCFJvdXNzYW5lBQM0NjVnEAUNUnVieSBDYWJlcm5ldAUDNDc3ZxAFDVNhaW50IE1hY2FpcmUFAzQ4OGcQBQpTYW5naW92ZXNlBQM0NDNnEAUPU2F1dmlnbm9uIEJsYW5jBQM0NTJnEAUIU2VtaWxsb24FAzQ1M2cQBQZTaGlyYXoFAzQ0NGcQBQdTdWx0YW5hBQM0ODZnEAUIU3lsdmFuZXIFAzQ3OGcQBQdUYW1pbmdhBQM0ODdnEAUGVGFubmF0BQM0OTJnEAUIVGFycmFuZ28FAzQ4NGcQBQtUZW1wcmFuaWxsbwUDNDQ1ZxAFB1RvdXJpZ2EFAzQ2OGcQBQhUcmFtaW5lcgUDNDU0ZxAFCVRyZWJiaWFubwUDNDczZxAFCFZlcmRlbGhvBQM0NTVnEAUIVmlvZ25pZXIFAzQ1NmcQBQ1XYWx0aGFtIENyb3NzBQM0OTFnEAUJWmluZmFuZGVsBQM0NDZnEAUJT3RoZXIgUmVkBQM0NTlnEAULT3RoZXIgV2hpdGUFAzQ1N2cWAWZkAgsPZBYCZg9kFgICAQ9kFgYCAw8QDxYIHwRnHwUFCERlc3ROYW1lHwYFCERlc3RDb2RlHwdnZA8WC2YCAQICAgMCBAIFAgYCBwIIAgkCChYLEGVlZxAFCUF1c3RyYWxpYQUCQVVnEAUGQ2FuYWRhBQJDQWcQBQVDaGluYQUCQ05nEAUHRGVubWFyawUCREtnEAUJSG9uZyBLb25nBQJIS2cQBQVKYXBhbgUCSlBnEAUXUmVwdWJsaWMgb2YgS29yZWEgKFN0aCkFAktQZxAFCVNpbmdhcG9yZQUCU0dnEAUOVW5pdGVkIEtpbmdkb20FAlVLZxAFDVVuaXRlZCBTdGF0ZXMFAlVTZxYBZmQCBQ8QDxYIHwRnHwUFBE5hbWUfBgUPUm91dGVUb01hcmtldElkHwdnZA8WBGYCAQICAgMWBBBlZWcQBRRDb3Jwb3JhdGUgU2FsZXMgVGVhbQUBM2cQBRJEaXJlY3QgVG8gQ29uc3VtZXIFATJnEAURRGlzdHJpYnV0b3IvQWdlbnQFATFnFgFmZAIHDxBkZBYBZmQCDQ9kFgJmD2QWAgIBD2QWCAIDDxAPFggfBGcfBQUaV2luZXJ5U2l6ZUFuZFRvbm5lc0NydXNoZWQfBgUMV2luZXJ5U2l6ZUlkHwdnZA8WBmYCAQICAgMCBAIFFgYQZWVnEAURTWljcm8gKCAwLTEwMCB0ICkFATFnEAUTU21hbGwgKCAxMDAtNzUwIHQgKQUBMmcQBRVNZWRpdW0gKCA3NTAtNTAwMCB0ICkFATNnEAUWTGFyZ2UgKCA1MDAwLTIwMDAwIHQgKQUBNGcQBRJNYWpvciAoICsyMDAwMCB0ICkFATVnFgFmZAIFDxBkDxYpZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQCFQIWAhcCGAIZAhoCGwIcAh0CHgIfAiACIQIiAiMCJAIlAiYCJwIoFikQZWVnEAUBMQUBMWcQBQEyBQEyZxAFATMFATNnEAUBNAUBNGcQBQE1BQE1ZxAFATYFATZnEAUBNwUBN2cQBQE4BQE4ZxAFATkFATlnEAUCMTAFAjEwZxAFAjExBQIxMWcQBQIxMgUCMTJnEAUCMTMFAjEzZxAFAjE0BQIxNGcQBQIxNQUCMTVnEAUCMTYFAjE2ZxAFAjE3BQIxN2cQBQIxOAUCMThnEAUCMTkFAjE5ZxAFAjIwBQIyMGcQBQIyMQUCMjFnEAUCMjIFAjIyZxAFAjIzBQIyM2cQBQIyNAUCMjRnEAUCMjUFAjI1ZxAFAjI2BQIyNmcQBQIyNwUCMjdnEAUCMjgFAjI4ZxAFAjI5BQIyOWcQBQIzMAUCMzBnEAUCMzEFAjMxZxAFAjMyBQIzMmcQBQIzMwUCMzNnEAUCMzQFAjM0ZxAFAjM1BQIzNWcQBQIzNgUCMzZnEAUCMzcFAjM3ZxAFAjM4BQIzOGcQBQIzOQUCMzlnEAUCNDAFAjQwZxYBZmQCCQ9kFgYCAw8QDxYIHwRnHwUFB09ha1R5cGUfBgUJT2FrVHlwZUlkHwdnZA8WBGYCAQICAgMWBBBlZWcQBQhBbWVyaWNhbgUBMWcQBQZGcmVuY2gFATJnEAUFT3RoZXIFATNnFgFmZAIFDxYCHwJoZAIHD2QWAmYPZBYCAgEPZBYKZg9kFgJmD2QWBgIBDxBkDxYVZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQWFRAFATAFATBnEAUBNQUBNWcQBQIxMAUCMTBnEAUCMTUFAjE1ZxAFAjIwBQIyMGcQBQIyNQUCMjVnEAUCMzAFAjMwZxAFAjM1BQIzNWcQBQI0MAUCNDBnEAUCNDUFAjQ1ZxAFAjUwBQI1MGcQBQI1NQUCNTVnEAUCNjAFAjYwZxAFAjY1BQI2NWcQBQI3MAUCNzBnEAUCNzUFAjc1ZxAFAjgwBQI4MGcQBQI4NQUCODVnEAUCOTAFAjkwZxAFAjk1BQI5NWcQBQMxMDAFAzEwMGcWAWZkAgMPEGQPFgxmAgECAgIDAgQCBQIGAgcCCAIJAgoCCxYMEAUBMQUBMWcQBQEyBQEyZxAFATMFATNnEAUBNAUBNGcQBQE1BQE1ZxAFATYFATZnEAUBNwUBN2cQBQE4BQE4ZxAFATkFATlnEAUCMTAFAjEwZxAFAjExBQIxMWcQBQIxMgUCMTJnFgFmZAIFDxBkDxYEZgIBAgICAxYEEAUDTmV3BQNuZXdnEAUKMSBZZWFyIE9sZAUFb25lWXJnEAUKMiBZZWFyIE9sZAUGdHdvWXJzZxAFCzMrIFllYXIgT2xkBQx0aHJlZVBsdXNZcnNnFgFmZAIBD2QWAmYPZBYGAgEPEGQPFhVmAgECAgIDAgQCBQIGAgcCCAIJAgoCCwIMAg0CDgIPAhACEQISAhMCFBYVEAUBMAUBMGcQBQE1BQE1ZxAFAjEwBQIxMGcQBQIxNQUCMTVnEAUCMjAFAjIwZxAFAjI1BQIyNWcQBQIzMAUCMzBnEAUCMzUFAjM1ZxAFAjQwBQI0MGcQBQI0NQUCNDVnEAUCNTAFAjUwZxAFAjU1BQI1NWcQBQI2MAUCNjBnEAUCNjUFAjY1ZxAFAjcwBQI3MGcQBQI3NQUCNzVnEAUCODAFAjgwZxAFAjg1BQI4NWcQBQI5MAUCOTBnEAUCOTUFAjk1ZxAFAzEwMAUDMTAwZxYBZmQCAw8QZA8WDGYCAQICAgMCBAIFAgYCBwIIAgkCCgILFgwQBQExBQExZxAFATIFATJnEAUBMwUBM2cQBQE0BQE0ZxAFATUFATVnEAUBNgUBNmcQBQE3BQE3ZxAFATgFAThnEAUBOQUBOWcQBQIxMAUCMTBnEAUCMTEFAjExZxAFAjEyBQIxMmcWAWZkAgUPEGQPFgRmAgECAgIDFgQQBQNOZXcFA25ld2cQBQoxIFllYXIgT2xkBQVvbmVZcmcQBQoyIFllYXIgT2xkBQZ0d29ZcnNnEAULMysgWWVhciBPbGQFDHRocmVlUGx1c1lyc2cWAWZkAgIPZBYCZg9kFgYCAQ8QZA8WFWYCAQICAgMCBAIFAgYCBwIIAgkCCgILAgwCDQIOAg8CEAIRAhICEwIUFhUQBQEwBQEwZxAFATUFATVnEAUCMTAFAjEwZxAFAjE1BQIxNWcQBQIyMAUCMjBnEAUCMjUFAjI1ZxAFAjMwBQIzMGcQBQIzNQUCMzVnEAUCNDAFAjQwZxAFAjQ1BQI0NWcQBQI1MAUCNTBnEAUCNTUFAjU1ZxAFAjYwBQI2MGcQBQI2NQUCNjVnEAUCNzAFAjcwZxAFAjc1BQI3NWcQBQI4MAUCODBnEAUCODUFAjg1ZxAFAjkwBQI5MGcQBQI5NQUCOTVnEAUDMTAwBQMxMDBnFgFmZAIDDxBkDxYMZgIBAgICAwIEAgUCBgIHAggCCQIKAgsWDBAFATEFATFnEAUBMgUBMmcQBQEzBQEzZxAFATQFATRnEAUBNQUBNWcQBQE2BQE2ZxAFATcFATdnEAUBOAUBOGcQBQE5BQE5ZxAFAjEwBQIxMGcQBQIxMQUCMTFnEAUCMTIFAjEyZxYBZmQCBQ8QZA8WBGYCAQICAgMWBBAFA05ldwUDbmV3ZxAFCjEgWWVhciBPbGQFBW9uZVlyZxAFCjIgWWVhciBPbGQFBnR3b1lyc2cQBQszKyBZZWFyIE9sZAUMdGhyZWVQbHVzWXJzZxYBZmQCAw9kFgJmD2QWBgIBDxBkDxYVZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQWFRAFATAFATBnEAUBNQUBNWcQBQIxMAUCMTBnEAUCMTUFAjE1ZxAFAjIwBQIyMGcQBQIyNQUCMjVnEAUCMzAFAjMwZxAFAjM1BQIzNWcQBQI0MAUCNDBnEAUCNDUFAjQ1ZxAFAjUwBQI1MGcQBQI1NQUCNTVnEAUCNjAFAjYwZxAFAjY1BQI2NWcQBQI3MAUCNzBnEAUCNzUFAjc1ZxAFAjgwBQI4MGcQBQI4NQUCODVnEAUCOTAFAjkwZxAFAjk1BQI5NWcQBQMxMDAFAzEwMGcWAWZkAgMPEGQPFgxmAgECAgIDAgQCBQIGAgcCCAIJAgoCCxYMEAUBMQUBMWcQBQEyBQEyZxAFATMFATNnEAUBNAUBNGcQBQE1BQE1ZxAFATYFATZnEAUBNwUBN2cQBQE4BQE4ZxAFATkFATlnEAUCMTAFAjEwZxAFAjExBQIxMWcQBQIxMgUCMTJnFgFmZAIFDxBkDxYEZgIBAgICAxYEEAUDTmV3BQNuZXdnEAUKMSBZZWFyIE9sZAUFb25lWXJnEAUKMiBZZWFyIE9sZAUGdHdvWXJzZxAFCzMrIFllYXIgT2xkBQx0aHJlZVBsdXNZcnNnFgFmZAIED2QWAmYPZBYGAgEPEGQPFhVmAgECAgIDAgQCBQIGAgcCCAIJAgoCCwIMAg0CDgIPAhACEQISAhMCFBYVEAUBMAUBMGcQBQE1BQE1ZxAFAjEwBQIxMGcQBQIxNQUCMTVnEAUCMjAFAjIwZxAFAjI1BQIyNWcQBQIzMAUCMzBnEAUCMzUFAjM1ZxAFAjQwBQI0MGcQBQI0NQUCNDVnEAUCNTAFAjUwZxAFAjU1BQI1NWcQBQI2MAUCNjBnEAUCNjUFAjY1ZxAFAjcwBQI3MGcQBQI3NQUCNzVnEAUCODAFAjgwZxAFAjg1BQI4NWcQBQI5MAUCOTBnEAUCOTUFAjk1ZxAFAzEwMAUDMTAwZxYBZmQCAw8QZA8WDGYCAQICAgMCBAIFAgYCBwIIAgkCCgILFgwQBQExBQExZxAFATIFATJnEAUBMwUBM2cQBQE0BQE0ZxAFATUFATVnEAUBNgUBNmcQBQE3BQE3ZxAFATgFAThnEAUBOQUBOWcQBQIxMAUCMTBnEAUCMTEFAjExZxAFAjEyBQIxMmcWAWZkAgUPEGQPFgRmAgECAgIDFgQQBQNOZXcFA25ld2cQBQoxIFllYXIgT2xkBQVvbmVZcmcQBQoyIFllYXIgT2xkBQZ0d29ZcnNnEAULMysgWWVhciBPbGQFDHRocmVlUGx1c1lyc2cWAWZkAgsPEGQPFilmAgECAgIDAgQCBQIGAgcCCAIJAgoCCwIMAg0CDgIPAhACEQISAhMCFAIVAhYCFwIYAhkCGgIbAhwCHQIeAh8CIAIhAiICIwIkAiUCJgInAigWKRBlZWcQBQExBQExZxAFATIFATJnEAUBMwUBM2cQBQE0BQE0ZxAFATUFATVnEAUBNgUBNmcQBQE3BQE3ZxAFATgFAThnEAUBOQUBOWcQBQIxMAUCMTBnEAUCMTEFAjExZxAFAjEyBQIxMmcQBQIxMwUCMTNnEAUCMTQFAjE0ZxAFAjE1BQIxNWcQBQIxNgUCMTZnEAUCMTcFAjE3ZxAFAjE4BQIxOGcQBQIxOQUCMTlnEAUCMjAFAjIwZxAFAjIxBQIyMWcQBQIyMgUCMjJnEAUCMjMFAjIzZxAFAjI0BQIyNGcQBQIyNQUCMjVnEAUCMjYFAjI2ZxAFAjI3BQIyN2cQBQIyOAUCMjhnEAUCMjkFAjI5ZxAFAjMwBQIzMGcQBQIzMQUCMzFnEAUCMzIFAjMyZxAFAjMzBQIzM2cQBQIzNAUCMzRnEAUCMzUFAjM1ZxAFAjM2BQIzNmcQBQIzNwUCMzdnEAUCMzgFAjM4ZxAFAjM5BQIzOWcQBQI0MAUCNDBnFgFmZAIRD2QWAmYPZBYCAgEPZBYEAgEPEGRkFgBkAgUPZBYCAgIPZBYCAgEPZBYCZg9kFgICAQ9kFgpmD2QWAmYPZBYGAgEPEGQPFhVmAgECAgIDAgQCBQIGAgcCCAIJAgoCCwIMAg0CDgIPAhACEQISAhMCFBYVEAUBMAUBMGcQBQE1BQE1ZxAFAjEwBQIxMGcQBQIxNQUCMTVnEAUCMjAFAjIwZxAFAjI1BQIyNWcQBQIzMAUCMzBnEAUCMzUFAjM1ZxAFAjQwBQI0MGcQBQI0NQUCNDVnEAUCNTAFAjUwZxAFAjU1BQI1NWcQBQI2MAUCNjBnEAUCNjUFAjY1ZxAFAjcwBQI3MGcQBQI3NQUCNzVnEAUCODAFAjgwZxAFAjg1BQI4NWcQBQI5MAUCOTBnEAUCOTUFAjk1ZxAFAzEwMAUDMTAwZxYBZmQCAw8QZA8WDGYCAQICAgMCBAIFAgYCBwIIAgkCCgILFgwQBQExBQExZxAFATIFATJnEAUBMwUBM2cQBQE0BQE0ZxAFATUFATVnEAUBNgUBNmcQBQE3BQE3ZxAFATgFAThnEAUBOQUBOWcQBQIxMAUCMTBnEAUCMTEFAjExZxAFAjEyBQIxMmcWAWZkAgUPEGQPFgRmAgECAgIDFgQQBQNOZXcFA25ld2cQBQoxIFllYXIgT2xkBQVvbmVZcmcQBQoyIFllYXIgT2xkBQZ0d29ZcnNnEAULMysgWWVhciBPbGQFDHRocmVlUGx1c1lyc2cWAWZkAgEPZBYCZg9kFgYCAQ8QZA8WFWYCAQICAgMCBAIFAgYCBwIIAgkCCgILAgwCDQIOAg8CEAIRAhICEwIUFhUQBQEwBQEwZxAFATUFATVnEAUCMTAFAjEwZxAFAjE1BQIxNWcQBQIyMAUCMjBnEAUCMjUFAjI1ZxAFAjMwBQIzMGcQBQIzNQUCMzVnEAUCNDAFAjQwZxAFAjQ1BQI0NWcQBQI1MAUCNTBnEAUCNTUFAjU1ZxAFAjYwBQI2MGcQBQI2NQUCNjVnEAUCNzAFAjcwZxAFAjc1BQI3NWcQBQI4MAUCODBnEAUCODUFAjg1ZxAFAjkwBQI5MGcQBQI5NQUCOTVnEAUDMTAwBQMxMDBnFgFmZAIDDxBkDxYMZgIBAgICAwIEAgUCBgIHAggCCQIKAgsWDBAFATEFATFnEAUBMgUBMmcQBQEzBQEzZxAFATQFATRnEAUBNQUBNWcQBQE2BQE2ZxAFATcFATdnEAUBOAUBOGcQBQE5BQE5ZxAFAjEwBQIxMGcQBQIxMQUCMTFnEAUCMTIFAjEyZxYBZmQCBQ8QZA8WBGYCAQICAgMWBBAFA05ldwUDbmV3ZxAFCjEgWWVhciBPbGQFBW9uZVlyZxAFCjIgWWVhciBPbGQFBnR3b1lyc2cQBQszKyBZZWFyIE9sZAUMdGhyZWVQbHVzWXJzZxYBZmQCAg9kFgJmD2QWBgIBDxBkDxYVZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQWFRAFATAFATBnEAUBNQUBNWcQBQIxMAUCMTBnEAUCMTUFAjE1ZxAFAjIwBQIyMGcQBQIyNQUCMjVnEAUCMzAFAjMwZxAFAjM1BQIzNWcQBQI0MAUCNDBnEAUCNDUFAjQ1ZxAFAjUwBQI1MGcQBQI1NQUCNTVnEAUCNjAFAjYwZxAFAjY1BQI2NWcQBQI3MAUCNzBnEAUCNzUFAjc1ZxAFAjgwBQI4MGcQBQI4NQUCODVnEAUCOTAFAjkwZxAFAjk1BQI5NWcQBQMxMDAFAzEwMGcWAWZkAgMPEGQPFgxmAgECAgIDAgQCBQIGAgcCCAIJAgoCCxYMEAUBMQUBMWcQBQEyBQEyZxAFATMFATNnEAUBNAUBNGcQBQE1BQE1ZxAFATYFATZnEAUBNwUBN2cQBQE4BQE4ZxAFATkFATlnEAUCMTAFAjEwZxAFAjExBQIxMWcQBQIxMgUCMTJnFgFmZAIFDxBkDxYEZgIBAgICAxYEEAUDTmV3BQNuZXdnEAUKMSBZZWFyIE9sZAUFb25lWXJnEAUKMiBZZWFyIE9sZAUGdHdvWXJzZxAFCzMrIFllYXIgT2xkBQx0aHJlZVBsdXNZcnNnFgFmZAIDD2QWAmYPZBYGAgEPEGQPFhVmAgECAgIDAgQCBQIGAgcCCAIJAgoCCwIMAg0CDgIPAhACEQISAhMCFBYVEAUBMAUBMGcQBQE1BQE1ZxAFAjEwBQIxMGcQBQIxNQUCMTVnEAUCMjAFAjIwZxAFAjI1BQIyNWcQBQIzMAUCMzBnEAUCMzUFAjM1ZxAFAjQwBQI0MGcQBQI0NQUCNDVnEAUCNTAFAjUwZxAFAjU1BQI1NWcQBQI2MAUCNjBnEAUCNjUFAjY1ZxAFAjcwBQI3MGcQBQI3NQUCNzVnEAUCODAFAjgwZxAFAjg1BQI4NWcQBQI5MAUCOTBnEAUCOTUFAjk1ZxAFAzEwMAUDMTAwZxYBZmQCAw8QZA8WDGYCAQICAgMCBAIFAgYCBwIIAgkCCgILFgwQBQExBQExZxAFATIFATJnEAUBMwUBM2cQBQE0BQE0ZxAFATUFATVnEAUBNgUBNmcQBQE3BQE3ZxAFATgFAThnEAUBOQUBOWcQBQIxMAUCMTBnEAUCMTEFAjExZxAFAjEyBQIxMmcWAWZkAgUPEGQPFgRmAgECAgIDFgQQBQNOZXcFA25ld2cQBQoxIFllYXIgT2xkBQVvbmVZcmcQBQoyIFllYXIgT2xkBQZ0d29ZcnNnEAULMysgWWVhciBPbGQFDHRocmVlUGx1c1lyc2cWAWZkAgQPZBYCZg9kFgYCAQ8QZA8WFWYCAQICAgMCBAIFAgYCBwIIAgkCCgILAgwCDQIOAg8CEAIRAhICEwIUFhUQBQEwBQEwZxAFATUFATVnEAUCMTAFAjEwZxAFAjE1BQIxNWcQBQIyMAUCMjBnEAUCMjUFAjI1ZxAFAjMwBQIzMGcQBQIzNQUCMzVnEAUCNDAFAjQwZxAFAjQ1BQI0NWcQBQI1MAUCNTBnEAUCNTUFAjU1ZxAFAjYwBQI2MGcQBQI2NQUCNjVnEAUCNzAFAjcwZxAFAjc1BQI3NWcQBQI4MAUCODBnEAUCODUFAjg1ZxAFAjkwBQI5MGcQBQI5NQUCOTVnEAUDMTAwBQMxMDBnFgFmZAIDDxBkDxYMZgIBAgICAwIEAgUCBgIHAggCCQIKAgsWDBAFATEFATFnEAUBMgUBMmcQBQEzBQEzZxAFATQFATRnEAUBNQUBNWcQBQE2BQE2ZxAFATcFATdnEAUBOAUBOGcQBQE5BQE5ZxAFAjEwBQIxMGcQBQIxMQUCMTFnEAUCMTIFAjEyZxYBZmQCBQ8QZA8WBGYCAQICAgMWBBAFA05ldwUDbmV3ZxAFCjEgWWVhciBPbGQFBW9uZVlyZxAFCjIgWWVhciBPbGQFBnR3b1lyc2cQBQszKyBZZWFyIE9sZAUMdGhyZWVQbHVzWXJzZxYBZmRkMXpwGSiVyQFPr2DgD7aeXssV6oM=" />
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['WineCalcForm'];
+            if (!theForm) {
+                theForm = document.WineCalcForm;
+            }
+
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+            //]]>
+            </script>
+            <script src="/WebResource.axd?d=567aG4u5WUT88IvkGhD8UpkeBtg30xqhpa75R9DdVYS2Dg0Ay585ZhRTNDpYbYCNVdMEmNVEg2SyjRIIGfJU4cVy-PA1&amp;t=635675130286393118" type="text/javascript"></script>
+            <script src="/ScriptResource.axd?d=yFfrEoZLaJNRWH-8NNEm-_pBZ989KSnaJ1kc58pWEJOIU42PzZ9PzNz5TXTIf_0fH3zR1P7kyw6rDaKiux2ubWvjuamvj4e3UeOytAa-MoNK6BEC03lnwdOD_vd2FRGHjIittVYGkQJ2mlAYk6aI56z5a7ZkVlZ18MUgNBbcrXRWmMcT0&amp;t=ffffffffd3a5635a" type="text/javascript"></script>
+            <script type="text/javascript">
+            //<![CDATA[
+            if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+            //]]>
+            </script>
+            <script src="/ScriptResource.axd?d=La3JJPrL2AEj9gkRnpV27epYSXIyQ9L-YAZS4Ou1sKaMv7X4M8F5VHKeI_Zv16Yex_wuriv1yaEhFkz9t6V8CoOroEu3m3R19MHMxyYA5DnVGPiumC8EM2SjMIUaf-IQnxvhC2AMCqrxS1MaQmmckqm88O1ClWlR8DNXjvsWra6UYtig0&amp;t=ffffffffd3a5635a" type="text/javascript"></script>
+            <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+            <div>
+                <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+                <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWTQKolKf4BQLI9oGlCQLI9oGlCQKno+OECgKqv7+4BwL60c7FBAK/k6s/Au/upe4MAsWOrf4FApTaoM0EApTaoM0EAuPGzsoNAq7Z+J4FAq7Z+J4FAseUpLsBAub80KcNAoPl/roLAoPl7roLAub8zKcNAoPluroLAs3XvtAHAseU2LsBAs3XttAHAuC99o4PAoj3jacOAtmw/uQMAoj31aQOAseU3LsBAryKkJABAu/Os1EC5vzcpw0Czdeq0AcC8tmR+goC8tnJ+goCx5TUuwEC4L3yjg8C4L3qjg8Cx5TIuwECiPfRpA4CvIqUkAEC2bC25wwCiPeJpw4C787rUQKI94WnDgLvzvdRAvLZ1foKAu/O41ECiPeBpw4C8tnB+goC787vUQKD5fK6CwLN17rQBwLgvcaODwLZsK7nDALy2c36CgLZsKrnDAK8ioyQAQLm/JinDQLgvfqODwLN14bQBwLy2Z36CgK8ityRAQKD5eq6CwLgvf6ODwK8ioiQAQLZsLLnDAKD5fa6CwLm/NSnDQLvzr9RAub8yKcNAseU0LsBAs3XstAHAsrmrkYC7KTUggMC8bqz7wcCp++gpAIC9cqb6gOQuCrWsB1m/N9hI5MMyUg14LfEcA==" />
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            Sys.WebForms.PageRequestManager._initialize('ScriptManager', document.getElementById('WineCalcForm'));
+            Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tWineCalcControl$ewcUpdatePanel0', 'tWineCalcControl$ewcUpdatePanel1', 'tWineCalcControl$ewcUpdatePanel2', 'tWineCalcControl$ewcUpdatePanel3', 'tWineCalcControl$ewcUpdatePanel4', 'tWineCalcControl$ewcUpdatePanel5', 'tWineCalcControl$ewcUpdatePanel6', 'tWineCalcControl$ewcUpdatePanel7', 'tWineCalcControl$ewcUpdatePanel8'], [], ['WineCalcControl$ewcPanel2Next'], 90);
+            //]]>
+            </script>
+            <div id="WineCalcControlPanel">
+                <!--// Javascript //-->
+                <script type="text/javascript">
+                //Show element
+                function ewcShow(id) {
+                    try {
+                        if ($("#" + id).hasClass("hidden")) {
+                            $("#" + id).removeClass("hidden");
+                        }
+                    } catch (e) {}
+                }
+
+                //Hide element
+                function ewcHide(id) {
+                    try {
+                        if (!$("#" + id).hasClass("hidden")) {
+                            $("#" + id).addClass("hidden");
+                        }
+                    } catch (e) {}
+                }
+
+                //Return to start confirmation box
+                function startAgain() {
+                    var confirmMsg = "Warning: By returning to the start of the benchmark calculation process, you will lose all information previously entered. Do you wish to continue?";
+
+                    if (confirm(confirmMsg)) {
+                        location.href = self.location + "?returnToStart=true";
+                    }
+                }
+
+                //Open up a print window
+                function openWindow() {
+                    var xLeft = 300; //Will keep x position from left
+                    var yTop = 0; //Will put new window on the top
+                    var sUrl = "Print.aspx"; //Window name
+                    var sFeatures = "width=650,height=850,left=" + xLeft + ",top=" + yTop + ",status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=no"; //Features of new window
+                    win = window.open(sUrl, "Print", sFeatures);
+                    win.focus(); //Gives focus to newly opened window
+                }
+                </script>
+                <!--// Logo //-->
+                <table class="ewcLogoBox">
+                    <tr>
+                        <td valign="middle" align="left">
+                            <img src="../graphics/AWBC_inlinestrip.gif" alt="" />
+                        </td>
+                        <td valign="middle" align="right">
+                            <img src="../graphics/LogoWFAburgundy.gif" alt="" class="wfa_logo"/>
+                        </td>
+                    </tr>
+                </table>
+                <table class="ewcMainTitleBox">
+                    <tr>
+                        <td valign="middle" align="left" class="ewcMainTitle">Wine Benchmark Calculator</td>
+                        <td valign="middle" align="right">
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <!--// Content Body //-->
+                <!--// ENTRY PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel0">
+                </div>
+                <!--// PANEL 1 //-->
+                <div id="WineCalcControl_ewcUpdatePanel1">
+                </div>
+                <!--// PANEL 2 //-->
+                <div id="WineCalcControl_ewcUpdatePanel2">
+                    <div id="WineCalcControl_ewcPanel2">
+                        <div class="ewcHead2">Step 1 - Winegrape Origin and Variety Selection</div>
+                        <div class="ewcCenter">
+                            <!--// Description //-->
+                            <table class="ewcFormTable" cellpadding="0" cellspacing="4">
+                                <tr>
+                                    <td>
+                                        <div>
+                                            Select the state, region and variety of the grapes used to produce your wine.
+                                            <br />
+                                            <br /> If a standard grape price for the selected region and variety is not available, you will be prompted to manually input your grape price.
+                                            <br />
+                                            <br /> Click the Next button to continue.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--// Form //-->
+                            <div class="form-group">
+                                <label for="WineCalcControl_ewcState" class="width-s">State <img src="./graphics/info_small.jpg" alt="info" id="grapeStateInfo" title="Select the State your grapes were grown in from the drop-down list."/></label>
+                                <select name="WineCalcControl_ewcState" id="WineCalcControl_ewcState" class="form-control">
+                                    <option selected="selected" value=""></option>
+                                    <option value="other">Other</option>
+                                </select>
+                                 <img src="./graphics/info_small.jpg" alt="info" id="grapeStateInfo" title="Select the State your grapes were grown in from the drop-down list." />
+                            </div>
+                            <div class="form-group">
+                                <label for="WineCalcControl_ewcRegion" class="width-s">Region <img src="./graphics/info_small.jpg" alt="info" id="grapeewcRegionInfo" title="Select the ewcRegion your grapes were grown in from the drop-down list."/></label>
+                                <select name="WineCalcControl_ewcRegion" id="WineCalcControl_ewcRegion" class="form-control">
+                                    <option selected="selected" value=""></option>
+                                    <option value="New South Wales">New South Wales</option>
+                                    <option value="Queensland">Queensland</option>
+                                    <option value="South Australia">South Australia</option>
+                                    <option value="Tasmania">Tasmania</option>
+                                    <option value="Victoria">Victoria</option>
+                                    <option value="Western Australia">Western Australia</option>
+                                </select>
+                                <img src="./graphics/info_small.jpg" alt="info" id="grapeewcRegionInfo" title="Select the ewcRegion your grapes were grown in from the drop-down list." />
+                            </div>
+                            <div class="form-group">
+                                <label for="WineCalcControl_ewcVariety" class="width-s">Variety <img src="./graphics/info_small.jpg" alt="info" id="grapeewcVarietyInfo" title="Select the ewcVariety your grapes were grown in from the drop-down list." /></label>
+                                <select name="WineCalcControl_ewcVariety" id="WineCalcControl_ewcVariety" class="form-control">
+                                    <option selected="selected" value=""></option>
+                                    <option value="489">Arneis</option>
+                                    <option value="466">Barbera</option>
+                                    <option value="475">Black Muscat</option>
+                                    <option value="435">Cabernet Franc</option>
+                                    <option value="436">Cabernet Sauvignon</option>
+                                    <option value="485">Canada Muscat</option>
+                                    <option value="467">Carignan</option>
+                                    <option value="479">Chambourcin</option>
+                                    <option value="447">Chardonnay</option>
+                                    <option value="448">Chenin Blanc</option>
+                                    <option value="460">Colombard</option>
+                                    <option value="483">Crouchen</option>
+                                    <option value="480">Dolcetto</option>
+                                    <option value="469">Doradillo</option>
+                                    <option value="474">Durif</option>
+                                    <option value="481">Gamay</option>
+                                    <option value="476">Graciano</option>
+                                    <option value="437">Grenache</option>
+                                    <option value="482">Lagrein</option>
+                                    <option value="462">Malbec</option>
+                                    <option value="449">Marsanne</option>
+                                    <option value="458">Mataro</option>
+                                    <option value="438">Merlot</option>
+                                    <option value="439">Meunier</option>
+                                    <option value="490">Mueller Thurgau</option>
+                                    <option value="464">Muscadelle</option>
+                                    <option value="463">Muscat a Petits Grains Rouge</option>
+                                    <option value="470">Muscat Blanc</option>
+                                    <option value="461">Muscat Gordo Blanco</option>
+                                    <option value="440">Nebbiolo</option>
+                                    <option value="471">Palomino</option>
+                                    <option value="472">Pedro Ximenes</option>
+                                    <option value="441">Petit Verdot</option>
+                                    <option value="450">Pinot Gris</option>
+                                    <option value="442">Pinot Noir</option>
+                                    <option value="451">Riesling</option>
+                                    <option value="465">Roussane</option>
+                                    <option value="477">Ruby Cabernet</option>
+                                    <option value="488">Saint Macaire</option>
+                                    <option value="443">Sangiovese</option>
+                                    <option value="452">Sauvignon Blanc</option>
+                                    <option value="453">Semillon</option>
+                                    <option value="444">Shiraz</option>
+                                    <option value="486">Sultana</option>
+                                    <option value="478">Sylvaner</option>
+                                    <option value="487">Taminga</option>
+                                    <option value="492">Tannat</option>
+                                    <option value="484">Tarrango</option>
+                                    <option value="445">Tempranillo</option>
+                                    <option value="468">Touriga</option>
+                                    <option value="454">Traminer</option>
+                                    <option value="473">Trebbiano</option>
+                                    <option value="455">Verdelho</option>
+                                    <option value="456">Viognier</option>
+                                    <option value="491">Waltham Cross</option>
+                                    <option value="446">Zinfandel</option>
+                                    <option value="459">Other Red</option>
+                                    <option value="457">Other White</option>
+                                </select>
+                                <img src="./graphics/info_small.jpg" alt="info" id="grapeewcVarietyInfo" title="Select the ewcVariety your grapes were grown in from the drop-down list." />
+                            </div>
+                            <!--// Buttons //-->
+                            <table class="ewcFormTable" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td> </td>
+                                    <td align="right">
+                                        <a href="index_2.html" class="btn btn-default">Next >></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--// PANEL 3 //-->
+                <div id="WineCalcControl_ewcUpdatePanel3">
+                </div>
+                <!--// PANEL 4 //-->
+                <div id="WineCalcControl_ewcUpdatePanel4">
+                </div>
+                <!--// PANEL 5 //-->
+                <div id="WineCalcControl_ewcUpdatePanel5">
+                </div>
+                <!--// PANEL 6 //-->
+                <div id="WineCalcControl_ewcUpdatePanel6">
+                </div>
+                <!--// End Content Body //-->
+                <!--// TERMS AND CONDITIONS PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel7">
+                </div>
+                <!--// CREDITS AND DATA SOURCES PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel8">
+                </div>
+                <br />
+                <div class="container">
+                    <div class="footer row">
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">Terms & Conditions</a></div>
+                        <div class="col-xs-6 col-sm-3 col-md-3"><a href="#">Credits & Data Sources</a></div>
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">FAQs</a></div>
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">Feedback</a></div>
+                        <div class="col-xs-12 col-sm-3 col-md-3"><img src="./graphics/deloitteLogo.gif" alt=""></div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                //<![CDATA[
+                Sys.Application.initialize();
+                //]]>
+                </script>
+        </form>
+        </div>
+</body>
+<script type="text/javascript" language="javascript">
+function addTooltips() {
+    try {
+        // Add qtip text using 'title' attribute to all info images
+        $('img[alt|=info]').qtip({
+            hide: {
+                effect: 'fade'
+            }
+        });
+        //Prevent doubled-up qtip for Oak treatments info image
+        $('#oakInfo').qtip({
+            content: 'Enter the percentage of the treated wine that will receive this specific form of oak treatment. For example; if the total wine was 1000 litres and 50% is going to receive oak treatment, when completing the oak maturation section assuming half of the wine designated for oak treatment is going in new French oak you would input 50% which equals 250 litres of total wine.'
+        });
+    } catch (ex) {}
+}
+
+//execute after each Ajax postback
+function registerHandler() {
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(addTooltips);
+}
+
+$(document).ready(function() {
+    addTooltips();
+});
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-16447261-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+</html>

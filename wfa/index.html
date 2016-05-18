@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Wine Benchmark Calculator</title>
+    <link href="css/ewcScreen.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body onload="registerHandler()">
+    <div id="wineCalcContainer">
+        <form name="WineCalcForm" method="post" action="Default.aspx" id="WineCalcForm">
+            <div>
+                <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+                <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+                <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['WineCalcForm'];
+            if (!theForm) {
+                theForm = document.WineCalcForm;
+            }
+
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+            //]]>
+            </script>
+            <script src="/WebResource.axd?d=567aG4u5WUT88IvkGhD8UpkeBtg30xqhpa75R9DdVYS2Dg0Ay585ZhRTNDpYbYCNVdMEmNVEg2SyjRIIGfJU4cVy-PA1&amp;t=635675130286393118" type="text/javascript"></script>
+            <script src="/ScriptResource.axd?d=yFfrEoZLaJNRWH-8NNEm-_pBZ989KSnaJ1kc58pWEJOIU42PzZ9PzNz5TXTIf_0fH3zR1P7kyw6rDaKiux2ubWvjuamvj4e3UeOytAa-MoNK6BEC03lnwdOD_vd2FRGHjIittVYGkQJ2mlAYk6aI56z5a7ZkVlZ18MUgNBbcrXRWmMcT0&amp;t=ffffffffd3a5635a" type="text/javascript"></script>
+            <script type="text/javascript">
+            //<![CDATA[
+            if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+            //]]>
+            </script>
+            <script src="/ScriptResource.axd?d=La3JJPrL2AEj9gkRnpV27epYSXIyQ9L-YAZS4Ou1sKaMv7X4M8F5VHKeI_Zv16Yex_wuriv1yaEhFkz9t6V8CoOroEu3m3R19MHMxyYA5DnVGPiumC8EM2SjMIUaf-IQnxvhC2AMCqrxS1MaQmmckqm88O1ClWlR8DNXjvsWra6UYtig0&amp;t=ffffffffd3a5635a" type="text/javascript"></script>
+            <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+            <div>
+                <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+                <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCALxh4PYBgKBw83EBgL40IOGBQKv565GAuyk1IIDAvG6s+8HAqfvoKQCAvXKm+oDC1wuWBEz/ovZU5cbgihHgffhd5M=" />
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            Sys.WebForms.PageRequestManager._initialize('ScriptManager', document.getElementById('WineCalcForm'));
+            Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tWineCalcControl$ewcUpdatePanel0', 'tWineCalcControl$ewcUpdatePanel1', 'tWineCalcControl$ewcUpdatePanel2', 'tWineCalcControl$ewcUpdatePanel3', 'tWineCalcControl$ewcUpdatePanel4', 'tWineCalcControl$ewcUpdatePanel5', 'tWineCalcControl$ewcUpdatePanel6', 'tWineCalcControl$ewcUpdatePanel7', 'tWineCalcControl$ewcUpdatePanel8'], [], ['WineCalcControl$ewcPanel1Next', 'WineCalcControl$TAndCLinkButton'], 90);
+            //]]>
+            </script>
+            <div id="WineCalcControlPanel">
+                <!--// Javascript //-->
+                <script type="text/javascript">
+                //Show element
+                function ewcShow(id) {
+                    try {
+                        if ($("#" + id).hasClass("hidden")) {
+                            $("#" + id).removeClass("hidden");
+                        }
+                    } catch (e) {}
+                }
+
+                //Hide element
+                function ewcHide(id) {
+                    try {
+                        if (!$("#" + id).hasClass("hidden")) {
+                            $("#" + id).addClass("hidden");
+                        }
+                    } catch (e) {}
+                }
+
+                //Return to start confirmation box
+                function startAgain() {
+                    var confirmMsg = "Warning: By returning to the start of the benchmark calculation process, you will lose all information previously entered. Do you wish to continue?";
+
+                    if (confirm(confirmMsg)) {
+                        location.href = self.location + "?returnToStart=true";
+                    }
+                }
+
+                //Open up a print window
+                function openWindow() {
+                    var xLeft = 300; //Will keep x position from left
+                    var yTop = 0; //Will put new window on the top
+                    var sUrl = "Print.aspx"; //Window name
+                    var sFeatures = "width=650,height=850,left=" + xLeft + ",top=" + yTop + ",status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=no"; //Features of new window
+                    win = window.open(sUrl, "Print", sFeatures);
+                    win.focus(); //Gives focus to newly opened window
+                }
+                </script>
+                <!--// Logo //-->
+                <table class="ewcLogoBox">
+                    <tr>
+                        <td valign="middle" align="left">
+                            <img src="../graphics/AWBC_inlinestrip.gif" alt="" />
+                        </td>
+                        <td valign="middle" align="right">
+                            <img src="../graphics/LogoWFAburgundy.gif" alt="" class="wfa_logo" />
+                        </td>
+                    </tr>
+                </table>
+                <table class="ewcMainTitleBox">
+                    <tr>
+                        <td valign="middle" align="left" class="ewcMainTitle">Wine Benchmark Calculator</td>
+                        <td valign="middle" align="right">
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <!--// Content Body //-->
+                <!--// ENTRY PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel0">
+                </div>
+                <!--// PANEL 1 //-->
+                <div id="WineCalcControl_ewcUpdatePanel1">
+                    <div id="WineCalcControl_ewcPanel1">
+                        <div class="ewcHead2">How to use the Gross Margin Ready Reckoner</div>
+                        <div class="ewcCenter">
+                            <!--// Description //-->
+                            <table class="ewcFormTable" cellpadding="0" cellspacing="4">
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <br />
+                                            <strong>What does this tool do?</strong>
+                                            <br /> The Gross Margin Ready Reckoner is a business planning tool using benchmark data generated from the Deloitte annual financial benchmarking survey. It calculates the profitability of certain wine production and sales scenarios. Profitability is measured by Gross Margin.
+                                            <br />
+                                            <br />
+                                            <strong>What is my Gross Margin?</strong>
+                                            <br /> Gross margin is the difference between revenue and cost of goods sold expressed as % of revenue. For example, if you had total revenue of $1,000,000 and your cost of goods sold was $600,000, your gross margin would be 40%.
+                                            <br />
+                                            <br />
+                                            <span style="text-decoration:underline">$1,000,000 - $600,000</span> = 40%
+                                            <br />
+                                            <span style="padding-left:30px">$1,000,000</span>
+                                            <br />
+                                            <br />
+                                            <strong>What is the relationship between my gross margin and profitability?</strong>
+                                            <br /> Profit is calculated by subtracting other costs, such as sales and marketing costs, administration costs and interest payments from the gross margin figure.
+                                            <br />
+                                            <br />
+                                            <strong>Applications of the Gross Margin Ready Reckoner</strong>
+                                            <br /> The Ready Reckoner can be used for both production and market simulations. It calculates gross margin impacts from:
+                                            <br /> • Prices in destination markets
+                                            <br /> • Market selection (countries)
+                                            <br /> • Route to market alternatives
+                                            <br /> • Production inputs variations
+                                            <br /> Therefore the Ready Reckoner can be used to simulate the impact of changes in product mix, pricing, markets and distribution strategies.
+                                            <br />
+                                            <br />
+                                            <strong>How do I use the Gross Margin Ready Reckoner?</strong>
+                                            <br /> Simply accept the standard terms and conditions of use and answer the questions on each of the 3 screens.
+                                            <br /> 1. Create your first benchmark report before moving on to make changes to your entries.
+                                            <br /> 2. Recalculate the gross margin and get immediate feedback on the effect your changes have on your sustainability.
+                                            <br /> 3. You can see your original results and the changes side-by-side and then print the results.
+                                            <br />
+                                            <br />
+                                            <div id="WineCalcControl_ewcPanel1CheckBoxArea">
+                                                <input id="WineCalcControl_ewcPanel1CheckBox1" type="checkbox" name="WineCalcControl$ewcPanel1CheckBox1" />
+                                                <label for="WineCalcControl_ewcPanel1CheckBox1">I have read and understood the </label>
+                                                <a id="WineCalcControl_TAndCLinkButton" href="javascript:__doPostBack('WineCalcControl$TAndCLinkButton','')">terms and conditions</a>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--// Buttons //-->
+                            <table class="ewcFormTable" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td align="right">
+                                        <a href="index_1.html" class="btn btn-default">Next >></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--// PANEL 2 //-->
+                <div id="WineCalcControl_ewcUpdatePanel2">
+                </div>
+                <!--// PANEL 3 //-->
+                <div id="WineCalcControl_ewcUpdatePanel3">
+                </div>
+                <!--// PANEL 4 //-->
+                <div id="WineCalcControl_ewcUpdatePanel4">
+                </div>
+                <!--// PANEL 5 //-->
+                <div id="WineCalcControl_ewcUpdatePanel5">
+                </div>
+                <!--// PANEL 6 //-->
+                <div id="WineCalcControl_ewcUpdatePanel6">
+                </div>
+                <!--// End Content Body //-->
+                <!--// TERMS AND CONDITIONS PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel7">
+                </div>
+                <!--// CREDITS AND DATA SOURCES PANEL //-->
+                <div id="WineCalcControl_ewcUpdatePanel8">
+                </div>
+                <br />
+                <div class="container">
+                    <div class="footer row">
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">Terms & Conditions</a></div>
+                        <div class="col-xs-6 col-sm-3 col-md-3"><a href="#">Credits & Data Sources</a></div>
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">FAQs</a></div>
+                        <div class="col-xs-6 col-sm-2 col-md-2"><a href="#">Feedback</a></div>
+                        <div class="col-xs-12 col-sm-3 col-md-3"><img src="./graphics/deloitteLogo.gif" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            Sys.Application.initialize();
+            //]]>
+            </script>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" language="javascript">
+function addTooltips() {
+    try {
+        // Add qtip text using 'title' attribute to all info images
+        $('img[alt|=info]').qtip({
+            hide: {
+                effect: 'fade'
+            }
+        });
+        //Prevent doubled-up qtip for Oak treatments info image
+        $('#oakInfo').qtip({
+            content: 'Enter the percentage of the treated wine that will receive this specific form of oak treatment. For example; if the total wine was 1000 litres and 50% is going to receive oak treatment, when completing the oak maturation section assuming half of the wine designated for oak treatment is going in new French oak you would input 50% which equals 250 litres of total wine.'
+        });
+    } catch (ex) {}
+}
+
+//execute after each Ajax postback
+function registerHandler() {
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(addTooltips);
+}
+
+$(document).ready(function() {
+    addTooltips();
+});
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-16447261-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+</html>
