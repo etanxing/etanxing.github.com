@@ -85,9 +85,9 @@ select {
 
 .ewcBtn {
     /*
-  background-color:#E7E7E7;
-  border:1px solid #CFCFCF;
-  */
+	background-color:#E7E7E7;
+	border:1px solid #CFCFCF;
+	*/
     font-size: 11px;
 }
 
@@ -3762,9 +3762,9 @@ button.list-group-item-danger.active:focus {
 }
 
 @media (min-width: 900px) {
-  .footer .col-xs-12 {
-    text-align: right;
-  }
+	.footer .col-xs-12 {
+		text-align: right;
+	}
 }
 
 .footer a {
@@ -3789,6 +3789,26 @@ button.list-group-item-danger.active:focus {
 
 #ewcModUC tr td:nth-child(3) select, #ewcModUC tr td:nth-child(3) input {
   width: 100px;
+}
+
+.ewcTHead {
+  vertical-align: middle !important;
+}
+
+a[data-toggle=collapse] span:first-child {
+  display: inline-block;
+}
+
+a[data-toggle=collapse] span:last-child {
+  display: none;
+}
+
+a[data-toggle=collapse].collapsed span:first-child {
+  display: none;
+}
+
+a[data-toggle=collapse].collapsed span:last-child {
+  display: inline-block;
 }
 
 @media (min-width: 415px) {
