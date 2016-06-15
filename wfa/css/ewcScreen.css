@@ -24,10 +24,8 @@ select {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-  select,
-  textarea,
-  input {
-    font-size: 12px !important;
+  select {
+    font-size: 16px !important;
   }
 }
 
