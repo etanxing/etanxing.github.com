@@ -27,7 +27,7 @@ select {
   select,
   textarea,
   input {
-    font-size: 16px !important;
+    font-size: 12px !important;
   }
 }
 
