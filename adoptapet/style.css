@@ -1,0 +1,59 @@
+body {
+    font: normal 18px Arial, sans-serif;
+}
+
+.button {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08929em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0 8px 0 8px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    position: relative;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    min-width: 160px;
+    height: 48px;
+    border: none;
+    outline: none;
+    /* @alternate */
+    line-height: inherit;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    -webkit-appearance: none;
+    overflow: hidden;
+    vertical-align: middle;
+    border-radius: 2px;
+    background-color: #6200ee; 
+    color: #fff;
+}
+
+ol {
+    margin: 0;
+    padding-left: 0;
+}
+
+li {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+li p {
+    text-align: center;
+}
+
+li p img {
+    border: 2px solid #f0f0f0;
+}
+
+span i {
+    font-size: 14px;
+}
