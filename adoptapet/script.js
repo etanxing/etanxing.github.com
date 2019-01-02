@@ -33,7 +33,7 @@ fetch(
           pet.img
         }" style="width: 100%; max-width: 300px;"></a></p>`
       : "";
-    return `${index + 1}. <b>${pet.name}</b> - ${pet.sex}, ${pet.age}, ${
+    return `<li>${index + 1}. <b>${pet.name}</b> - ${pet.sex}, ${pet.age}, ${
       pet.breed
     } ${img}
   <p><a href="https://www.adoptapet.com.au/pet/${
