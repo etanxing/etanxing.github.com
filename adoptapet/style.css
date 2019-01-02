@@ -4,6 +4,7 @@ body {
 
 #petlist {
     margin-top: 1rem;
+    list-style: none;
 }
 
 .lds-ring {

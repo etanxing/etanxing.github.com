@@ -2,15 +2,15 @@ const root = document.getElementById("root");
 
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, '\\$&');
-  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
   if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  if (!results[2]) return "";
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-const id = getParameterByName('p')
+const id = getParameterByName("p");
 
 fetch(
   `https://gv5wp4nyl5.execute-api.ap-southeast-2.amazonaws.com/dev/getpets/${id}`
@@ -20,7 +20,7 @@ fetch(
     document.title = `${data.type} in ${
       data.location
     } | Workswell - Frontend Development Specialist`;
-    root.innerHTML = `<h1>Hey, we found following pets in ${data.location}</h1>
+    const mockup = `<h1>Hey, we found following pets in ${data.location}</h1>
 	<span><i>Note: Some pets may be unavailable after <time>${
     data.dt
   }</time></i></span>
@@ -40,6 +40,8 @@ fetch(
     pet.id
   }" class="button">More details</a></p>
 </li>`;
-  })}
+  }).join('')}
   </ol>`;
+    console.log('mockup', mockup)
+    root.innerHTML = mockup;
   });
