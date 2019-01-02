@@ -12,6 +12,8 @@ function getParameterByName(name, url) {
 
 const id = getParameterByName("p");
 
+if (!id) window.location.replace("https://twitter.com/adoptapetatsa");
+
 fetch(
   `https://gv5wp4nyl5.execute-api.ap-southeast-2.amazonaws.com/dev/getpets/${id}`
 )
@@ -44,4 +46,5 @@ fetch(
   </ol>`;
     console.log('mockup', mockup)
     root.innerHTML = mockup;
-  });
+  })
+  .catch(() => window.location.replace("https://twitter.com/adoptapetatsa"));
