@@ -44,7 +44,11 @@ fetch(
 </li>`;
   }).join('')}
   </ol>`;
-    console.log('mockup', mockup)
     root.innerHTML = mockup;
   })
   .catch(() => window.location.replace("https://twitter.com/adoptapetatsa"));
+
+const [ location2, type2, datetime2] = id.replace('-and-',' & ').toUpperCase().split('-');
+
+document.title = `${type2} in ${location2} | Workswell - Frontend Development Specialist`;
+root.innerHTML = `<h1>Hey, we found following pets in ${location2}</h1><div id="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>`
