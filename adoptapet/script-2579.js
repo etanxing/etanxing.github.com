@@ -24,7 +24,7 @@ fetch(
     } | Workswell - Frontend Development Specialist`;
     const mockup = `<h1>Hey, we found following pets in ${data.location}</h1>
 	<span><i>Note: Some pets may be unavailable after <time>${
-    data.dt
+    data.dt || dateFns.format(dateFns.addHours(new Date(data.ts), 2), 'Do MMMM YYYY, HH:mm')
   }</time></i></span>
   <ol id="petlist">
   ${data.pets.map((pet, index) => {
