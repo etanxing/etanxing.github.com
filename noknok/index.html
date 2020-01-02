@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        NokNok - We love bargains!
+    </title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-248428-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-248428-1');
+    </script>
+
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var site = urlParams.get('site');
+        var id = urlParams.get('id');
+        if (site === 'ozb') {
+            window.location.replace('https://www.ozbargain.com.au/node/' + id);
+        }            
+    </script>
+</head>
+</html>
