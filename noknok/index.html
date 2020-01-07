@@ -20,7 +20,9 @@
         var site = urlParams.get('site');
         var id = urlParams.get('id');
         if (site === 'ozb') {
-            window.location.replace('https://www.ozbargain.com.au/node/' + id);
+            setTimeout(function() {
+                window.location.replace('https://www.ozbargain.com.au/node/' + id);
+            }, 1000);
         }            
     </script>
 </head>
