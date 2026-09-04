@@ -17,7 +17,9 @@ const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
   compatibility_date: '2026-09-04',
   compatibility_flags: ['nodejs_compat'],
-  workers_dev: false,
+  workers_dev: true,
+  preview_urls: true,
+  observability: { enabled: true, head_sampling_rate: 0.1 },
   routes: [{ pattern: 'ixux.com', custom_domain: true }],
   d1_databases: d1
     ? [
