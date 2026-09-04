@@ -19,6 +19,13 @@ export const metadata: Metadata = {
     description: 'A shared symbol for curious humans.',
     images: ['/og.png'],
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/favicon.svg',
+  },
 };
 
 export const viewport: Viewport = {
