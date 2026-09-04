@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { PointerEvent as ReactPointerEvent } from 'react';
+import { FluidWorld } from './fluid-world';
 
 type FieldMark = {
   id: number;
@@ -14,8 +15,6 @@ type FieldMark = {
 const seedMarks: FieldMark[] = [
   { id: 1, x: 16, y: 30, rotation: -12, scale: 0.75 },
   { id: 2, x: 74, y: 24, rotation: 18, scale: 1.08 },
-  { id: 3, x: 65, y: 73, rotation: -29, scale: 0.62 },
-  { id: 4, x: 29, y: 70, rotation: 34, scale: 0.9 },
 ];
 
 export default function Home() {
@@ -71,6 +70,8 @@ export default function Home() {
     root.style.setProperty('--portal-x', `${nx * 20}px`);
     root.style.setProperty('--portal-y', `${ny * 20}px`);
     root.style.setProperty('--portal-rotate', `${nx * 30}deg`);
+    root.style.setProperty('--scene-rx', `${ny * -18}deg`);
+    root.style.setProperty('--scene-ry', `${nx * 22}deg`);
   };
 
   const addMark = (event: ReactPointerEvent<HTMLElement>) => {
@@ -82,11 +83,12 @@ export default function Home() {
     const id = Date.now();
     const rotation = ((id % 77) - 38) * 1.2;
     const scale = 0.62 + (id % 6) * 0.11;
-    setMarks((current) => [...current.slice(-13), { id, x, y, rotation, scale }]);
+    setMarks((current) => [...current.slice(-6), { id, x, y, rotation, scale }]);
   };
 
   return (
     <main className="site-shell" ref={shellRef} onPointerMove={trackPointer}>
+      <FluidWorld />
       <div className="cursor-dot" aria-hidden="true">×</div>
       <div className="scroll-progress" aria-hidden="true"><span /></div>
 
@@ -110,16 +112,15 @@ export default function Home() {
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-axis hero-axis-x" aria-hidden="true" />
         <div className="hero-axis hero-axis-y" aria-hidden="true" />
-        <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
-        <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
-
         <button
           className="hero-cross-wrap"
           type="button"
-          onClick={() => setBurst((value) => value + 1)}
+          onClick={() => {
+            setBurst((value) => value + 1);
+            window.dispatchEvent(new Event('ixux-burst'));
+          }}
           aria-label="Activate the intersection"
         >
-          <span className="hero-cross">×</span>
           <span className="cross-core" />
           <span className="cross-burst" key={burst} />
         </button>
@@ -132,14 +133,12 @@ export default function Home() {
 
         <p className="hero-kicker">EXPERIENCE<br />MULTIPLIES</p>
         <p className="hero-note">A shared symbol for<br />curious humans.</p>
-        <p className="move-note" aria-hidden="true">MOVE / CLICK</p>
 
         <a className="scroll-cue" href="#multiply" aria-label="Explore I × UX">
           <span>SCROLL TO<br />TRANSFORM</span>
           <span className="scroll-arrow" aria-hidden="true">↓</span>
         </a>
 
-        <div className="hero-index" aria-hidden="true">01 / 04</div>
       </section>
 
       <section className="multiply-panel" id="multiply" aria-labelledby="multiply-title">
@@ -147,12 +146,6 @@ export default function Home() {
         <div className="multiply-type" id="multiply-title" data-reveal>
           <span className="multiply-word word-top">EXPERIENCE</span>
           <span className="multiply-word word-bottom">MULTIPLIES</span>
-        </div>
-        <div className="geo-stage" aria-hidden="true">
-          <span className="geo geo-square" />
-          <span className="geo geo-circle" />
-          <span className="geo geo-cross">×</span>
-          <span className="geo geo-line" />
         </div>
         <p className="multiply-caption" data-reveal>WHEN THOUGHT MEETS CARE</p>
         <div className="kinetic-strip" aria-hidden="true">
@@ -167,9 +160,7 @@ export default function Home() {
         </div>
         <div className="relationship" data-reveal aria-label="I multiplied by you">
           <span className="relationship-i">I</span>
-          <div className="relationship-portal" aria-hidden="true">
-            <span>×</span><i /><i />
-          </div>
+          <div className="relationship-gap" aria-hidden="true" />
           <span className="relationship-you">YOU</span>
         </div>
         <p className="connection-note">MOVE THROUGH<br />THE MIDDLE.</p>
@@ -204,8 +195,6 @@ export default function Home() {
       </section>
 
       <section className={`join-panel ${joined ? 'joined' : ''}`} id="join" aria-labelledby="join-title">
-        <div className="join-corner join-corner-a" aria-hidden="true">×</div>
-        <div className="join-corner join-corner-b" aria-hidden="true">×</div>
         <p className="join-pre">04 / THE BEGINNING</p>
         <h2 id="join-title" data-reveal>{joined ? 'YOU × US' : 'JOIN THE\nEXPERIMENT'}</h2>
         <button className="join-button" type="button" onClick={() => setJoined((value) => !value)}>

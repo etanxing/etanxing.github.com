@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ixux-experiment.beige-oak-0128.chatgpt.site'),
+  metadataBase: new URL('http://localhost:3000'),
   title: 'I × UX — Experience Multiplies',
   description: 'An open idea for curious humans who believe thoughtful design multiplies human potential.',
   applicationName: 'I × UX',
